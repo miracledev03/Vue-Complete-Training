@@ -26,9 +26,12 @@
       <p>Result: {{ counter }}</p>
       <input
         type="text"
+        v-bind:value="name"
         v-on:input="setName($event, 'Gentleman')"
         v-on:keyup.enter="confirmInput"
       />
+      <input type="text" v-model="name">
+      <button v-on:click="resetInput">Reset Input</button>
       <p>Your Name: {{ confirmedName }}</p>
       <form v-on:submit.prevent="submitForm">
         <input type="text" />
