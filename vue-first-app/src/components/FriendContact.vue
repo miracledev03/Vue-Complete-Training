@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h2>{{ friend.name }}</h2>
+    <header><h1>{{ friend.name }}</h1></header>
     <button @click="toggleDetails">Show Details</button>
     <ul v-if="detailsAreVisible">
       <li>
