@@ -1,8 +1,11 @@
 <template>
   <section>
-    <h2>My Friends</h2>
+    <header>
+      <h1>My Friends</h1>
+    </header>
     <ul>
-      <li></li>
+      <friend-contact></friend-contact>
+      <friend-contact></friend-contact>
     </ul>
   </section>
 </template>
@@ -15,13 +18,13 @@ export default {
         {
           id: "manuel",
           name: "Manuel Lorenz",
-          phone: "01234 5678 991",
+          phone: "0123 45678 90",
           email: "manuel@localhost.com",
         },
         {
           id: "julie",
           name: "Julie Jones",
-          phone: "09876 543 221",
+          phone: "0987 654421 21",
           email: "julie@localhost.com",
         },
       ],
