@@ -7,7 +7,7 @@
     <ul>
       <friend-contact v-for="friend in friends" :key="friend.id" :id="friend.id" :name="friend.name"
         :phone-number="friend.phone" :email-address="friend.email" :is-favorite="friend.isFavorite"
-        @toggle-favorite="toggleFavoriteStatus">
+        @toggle-favorite="toggleFavoriteStatus" @delete="deleteContact">
       </friend-contact>
     </ul>
   </section>
@@ -50,6 +50,9 @@ export default {
       };
 
       this.friends.push(newFriendContact);
+    },
+    deleteContact(friendId) {
+      this.friends = this.friends.filter(friend => friend.id !== friendId);
     }
   }
 };
