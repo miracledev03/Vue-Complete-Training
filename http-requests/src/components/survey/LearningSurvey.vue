@@ -65,7 +65,7 @@ export default {
       // });
 
       this.error = null;
-      fetch('https://vue-http-demo-18870-default-rtdb.firebaseio.com/surveys', {
+      fetch('https://vue-http-demo-18870-default-rtdb.firebaseio.com/surveys.json', {
         method: 'POST',
         header: {
           'Content-Type': 'application/json'
