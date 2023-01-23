@@ -47,7 +47,7 @@ export default {
 
     for (const key in responseData) {
       const coach = {
-        id: responseData[key].name,
+        id: key,
         firstName: responseData[key].firstName,
         lastName: responseData[key].lastName,
         description: responseData[key].desccription,
