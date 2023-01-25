@@ -3,11 +3,11 @@
         <form @submit.prevent="submitForm">
             <div class="form-control">
                 <label for="email">E-Mail</label>
-                <input type="email" id="email">
+                <input type="email" id="email" v-model="email">
             </div>
             <div class="form-control">
                 <label for="password">Password</label>
-                <input type="password" id="password">
+                <input type="password" id="password" v-model="password">
             </div>
             <p v-if="!formIsValid">Please enter a valid email and password (must be at 6 characters long.)</p>
             <base-button>{{ submitButtonCaption }}</base-button>
@@ -44,11 +44,19 @@ export default {
     },
     methods: {
         submitForm() {
-            if (this.email === '' || this.email.includes('@') || this.password.length < 6) {
+            if (this.email === '' || !this.email.includes('@') || this.password.length < 6) {
                 this.formIsValid = false;
                 return;
             }
-            // send http request...
+
+            if (this.mode === 'login') {
+                // ...
+            } else {
+                this.$store.dispatch('signup', {
+                    email: this.email,
+                    password: this.password
+                });
+            }
         },
         switchAuthMode() {
             if (this.mode === 'login') {
