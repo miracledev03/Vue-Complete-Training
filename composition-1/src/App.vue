@@ -1,30 +1,34 @@
 <template>
   <section class="container">
     <h2>{{ user.name }}</h2>
-    <p>{{ user }}</p>
     <h3>{{ user.age }}</h3>
+    <button @click="setAge">Change Age</button>
   </section>
 </template>
 
 <script>
-import { ref, reactive, isReactive, isRef, toRefs } from 'vue';
+import { reactive } from 'vue';
 
 export default {
   setup() {
     // const uName = ref('Maximilian');
-    const uAge = ref(31);
+    // const uAge = ref(31);
 
     const user = reactive({
       name: 'Maximilian',
       age: 31
     });
 
-    console.log(isRef(uAge));
-    console.log(isReactive(user), user.age);
+    function setNewAge() {
+      user.age = 33;
+    }
+
+    // console.log(isRef(uAge));
+    // console.log(isReactive(user), user.age);
 
     setTimeout(function () {
       // uName.value = 'Max';
-      uAge.value = 32;
+      // uAge.value = 32;
 
       // user.value.name = 'Max';
       // user.value.age = 32;
@@ -33,19 +37,26 @@ export default {
       user.age = 32;
     }, 2000);
 
-    const userRefs = toRefs(user);
+    // const userRefs = toRefs(user);
 
     return {
-      userName: userRefs.name,
-      age: userRefs.age,
+      // userName: user.name,
+      // age: user.age,
       user: user,
+      setAge: setNewAge,
     };
   },
   // data() {
   //   return {
   //     userName: 'Maximilian',
+  //     age: 31
   //   };
   // },
+  // methods: {
+  //   setNewAge() {
+  //     this.age = 32;
+  //   }
+  // }
 };
 </script>
 
