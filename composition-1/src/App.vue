@@ -7,23 +7,24 @@
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { ref, reactive, isReactive, isRef, toRefs } from 'vue';
 
 export default {
   setup() {
     // const uName = ref('Maximilian');
-    // const uAge = ref(31);
+    const uAge = ref(31);
 
     const user = reactive({
       name: 'Maximilian',
       age: 31
     });
 
-    console.log(user);
+    console.log(isRef(uAge));
+    console.log(isReactive(user), user.age);
 
     setTimeout(function () {
       // uName.value = 'Max';
-      // uAge.value = 32;
+      uAge.value = 32;
 
       // user.value.name = 'Max';
       // user.value.age = 32;
@@ -32,9 +33,11 @@ export default {
       user.age = 32;
     }, 2000);
 
+    const userRefs = toRefs(user);
+
     return {
-      userName: user.name,
-      age: user.age,
+      userName: userRefs.name,
+      age: userRefs.age,
       user: user,
     };
   },
