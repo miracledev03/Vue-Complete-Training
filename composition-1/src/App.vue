@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import { ref, reactive, computed } from 'vue';
+import { ref, reactive, computed, watch } from 'vue';
 
 export default {
   setup() {
     // const uName = ref('Maximilian');
-    // const uAge = ref(31);
+    const uAge = ref(31);
 
     const firstName = ref('');
     const lastName = ref('');
@@ -30,8 +30,16 @@ export default {
       return firstName.value + ' ' + lastName.value;
     });
 
+    watch([uAge, uName], function(newValues, oldValues) {
+      console.log('Old Age: ' + oldValues[0]);
+      console.log('New Age: ' + newValues[0]);
+      console.log('Old Name: ' + oldValues[1]);
+      console.log('New Name: ' + newValues[1]);
+    });
+
     function setNewAge() {
       user.age = 33;
+      uAge.value = 33;
     }
 
     function setFirstName(event) {
@@ -79,6 +87,11 @@ export default {
   // methods: {
   //   setNewAge() {
   //     this.age = 32;
+  //   }
+  // },
+  // watch: {
+  //   age(val) {
+  //     console.log(val);
   //   }
   // }
 };
