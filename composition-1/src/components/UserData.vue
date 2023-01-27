@@ -1,10 +1,10 @@
 <template>
     <h2>{{ userName }}</h2>
-    <h3>{{ age }}</h3>
+    <h3>{{ userAge }}</h3>
 </template>
 
 <script>
-import { computed } from 'vue';
+import { computed, inject } from 'vue';
 
 export default {
     props: ['firstName', 'lastName', 'age'],
@@ -15,10 +15,15 @@ export default {
 
         console.log(context);
 
-        context.emit('save-data', 1); // this.$emit('save-data', 1);
+        const age = inject('userAge');
+
+        console.log(age);
+
+        // context.emit('save-data', 1); // this.$emit('save-data', 1);
 
         return {
             userName: uName,
+            userAge: age,
         };
     },
     // computed: {
